@@ -1,0 +1,13 @@
+package com.mvcexample.demomvc.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+// not used
+@Controller
+public class UserTitle {
+    @GetMapping("/greet")
+    public String greet() {
+        return "greeting";  // goes to greeting.html or greeting.jsp
+    }
+}
