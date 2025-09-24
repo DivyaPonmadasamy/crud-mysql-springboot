@@ -117,4 +117,15 @@ public class PersonService {
 
         return personRepo.save(person);
     }
+
+    // delete person by id - simultaneously deletes corresponding entry in degrees due to CascadeType.ALL
+    public boolean deletePersonById(int id) {
+        Optional<Person> personList = personRepo.findById(id);
+
+        if(personList.isEmpty()) 
+            return false; // record to be deleted not found in DB
+        personRepo.deleteById(id);
+        return true;
+    }
 }
+
