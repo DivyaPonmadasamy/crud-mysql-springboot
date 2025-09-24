@@ -145,4 +145,15 @@ public class PersonController {
             + lastName + " - Updated Succesfully...\n\n" + person);
         } else return ResponseEntity.status(404).body("Person not Found");
     }    
+
+    // delete person by id
+    @DeleteMapping("/deletepersonbyid") 
+    public ResponseEntity<String> deletePersonById(@RequestParam int id) {
+        boolean isDeleted = personService.deletePersonById(id);
+        if(isDeleted) {
+            return ResponseEntity.status(200).body("Person with id " + id + " deleted successfully");
+        } else {
+            return ResponseEntity.status(404).body("Person with id " + id + " not found");
+        }
+    }
 }
